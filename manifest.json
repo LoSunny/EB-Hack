@@ -1,0 +1,39 @@
+{
+  "manifest_version": 2,
+  "name": "EB Hack By SunnyLo",
+  "version": "1.0",
+  "description": "xD",
+  "browser_action": {
+    "default_icon": "logo.png",
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "logo.png",
+    "48": "logo.png",
+    "128": "logo.png"
+  },
+  "content_scripts": [{
+    "matches": [
+      "https://lms.wiseman.com.hk/lms/scorm/*"
+    ],
+    "all_frames": true,
+    "js": ["lib/jquery-3.4.1.min.js", "lib/alertify.min.js", "content.js"],
+    "css": ["lib/alertify.min.css", "lib/default.min.css"]
+  }],
+  "web_accessible_resources": ["contentReal.js"],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "externally_connectable": {
+    "matches": ["https://lms.wiseman.com.hk/*"]
+  },
+  "permissions": [
+    "*://*/*",
+    "storage",
+    "webRequest",
+    "webRequestBlocking",
+    "clipboardRead",
+    "clipboardWrite"
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}
